@@ -113,7 +113,7 @@ window.OverworldMaps = {
             })
         },
         walls: {
-            //Dynamic key, e.g. evaluate to "16, 16": true
+            //Grid number within room that has a wall. I.e. (col, row)
             [utils.asGridCoord(7, 6)]: true, 
             [utils.asGridCoord(8, 6)]: true,
             [utils.asGridCoord(7, 7)]: true,
@@ -121,15 +121,42 @@ window.OverworldMaps = {
 
             [utils.asGridCoord(1, 3)]: true, 
             [utils.asGridCoord(2, 3)]: true,
-            [utils.asGridCoord(3, 4)]: true, 
-            [utils.asGridCoord(4, 4)]: true, 
+            [utils.asGridCoord(3, 3)]: true, 
+            [utils.asGridCoord(4, 3)]: true, 
             [utils.asGridCoord(5, 3)]: true, 
-            [utils.asGridCoord(6, 3)]: true, 
             [utils.asGridCoord(6, 4)]: true, 
-            [utils.asGridCoord(8, 3)]: true, 
+            [utils.asGridCoord(7, 4)]: true, 
             [utils.asGridCoord(8, 4)]: true, 
             [utils.asGridCoord(9, 3)]: true, 
             [utils.asGridCoord(10, 3)]: true, 
+
+            //left wall of room
+            [utils.asGridCoord(0, 4)]: true,
+            [utils.asGridCoord(0, 5)]: true,
+            [utils.asGridCoord(0, 6)]: true,
+            [utils.asGridCoord(0, 7)]: true,
+            [utils.asGridCoord(0, 8)]: true,
+            [utils.asGridCoord(0, 9)]: true,
+
+            //right wall of room
+            [utils.asGridCoord(11, 4)]: true,
+            [utils.asGridCoord(11, 5)]: true,
+            [utils.asGridCoord(11, 6)]: true,
+            [utils.asGridCoord(11, 7)]: true,
+            [utils.asGridCoord(11, 8)]: true,
+            [utils.asGridCoord(11, 9)]: true,
+
+            //bottom wall/exit-side of room
+            [utils.asGridCoord(1, 10)]: true,
+            [utils.asGridCoord(2, 10)]: true,
+            [utils.asGridCoord(3, 10)]: true,
+            [utils.asGridCoord(4, 10)]: true,
+            [utils.asGridCoord(5, 11)]: true,
+            [utils.asGridCoord(6, 10)]: true,
+            [utils.asGridCoord(7, 10)]: true,
+            [utils.asGridCoord(8, 10)]: true,
+            [utils.asGridCoord(9, 10)]: true,
+            [utils.asGridCoord(10, 10)]: true,
         }
     },
     MainStreet: {

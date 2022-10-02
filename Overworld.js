@@ -48,7 +48,7 @@ class Overworld {
 
     init() {
         //Create new instance of overworld map, passing in the requested map.
-        this.map = new OverworldMap(window.OverworldMaps.MainStreet);
+        this.map = new OverworldMap(window.OverworldMaps.IntroRoom);
         this.map.mountObjects();
 
         this.directionInput = new DirectionInput();
@@ -59,13 +59,13 @@ class Overworld {
         this.directionInput.direction; 
 
         this.startGameLoop();
-        // this.map.startCutscene([
-        //     {type: "textMessage", text: "HELLO THERE"},
-        //     // {who: "hero", type: "walk", direction: "down"},
-        //     // {who: "hero", type: "walk", direction: "down"},
-        //     // {who: "npcA", type: "walk", direction: "left"},
-        //     // {who: "npcA", type: "walk", direction: "left"},
-        //     // {who: "npcA", type: "stand", direction: "up", time: 800},
-        // ])
+        this.map.startCutscene([
+            {type: "textMessage", text: "Hi there!"},
+            // {who: "hero", type: "walk", direction: "down"},
+            // {who: "hero", type: "walk", direction: "down"},
+            // {who: "npcA", type: "walk", direction: "left"},
+            // {who: "npcA", type: "walk", direction: "left"},
+            // {who: "npcA", type: "stand", direction: "up", time: 800},
+        ])
     }
 }
