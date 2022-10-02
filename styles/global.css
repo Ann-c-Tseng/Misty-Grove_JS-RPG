@@ -1,0 +1,40 @@
+:root {
+    --border-color: #291d4D;
+    --dialog-background: #FFF3B4;
+
+    --menu-background: #FFE8D2;
+    --menu-border-color: #A48465;
+    --menu-font-color: #3A160D;
+    --menu-selected-background: #7FC2FF;
+}
+
+* {
+    box-sizing: border-box;
+}
+body {
+    background: #333;
+    padding: 0;
+    margin: 0;
+    
+    /*overflow clips content: prevent browser from scrolling when user uses arrow keys.*/
+    overflow: hidden;
+}
+
+/* The game's screen */
+.game-container {
+    position: relative;
+    width: 352px;
+    height: 198px;
+
+    outline: 1px solid white;
+
+    margin: 0 auto;
+
+    transform: scale(3) translateY(50%); /*scale up each pixels by 3 starting from the middle of the image,
+     translate to fix the image being pushed beyond the top of the screen*/
+}
+
+.game-container canvas {
+    image-rendering: pixelated; /* Evenly multiply all the pixels, making the blurred scaled-up image into a crisp image*/
+}
+
