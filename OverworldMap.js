@@ -1,6 +1,8 @@
 class OverworldMap {
     constructor(config) {
         this.gameObjects = config.gameObjects;
+        this.cutsceneSpaces = config.cutsceneSpaces || {};
+
         this.walls = config.walls || {};
 
         this.lowerImage = new Image();
@@ -62,6 +64,33 @@ class OverworldMap {
         Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this));
     }
 
+    checkForActionCutscene() {
+        const hero = this.gameObjects["hero"];
+        const nextCoords = utils.nextPosition(hero.x, hero.y, hero.direction);
+        const match = Object.values(this.gameObjects).find(object => {
+            return `${object.x}, ${object.y}` === `${nextCoords.x}, ${nextCoords.y}`
+        });
+        //Check first if we don't have another cutscene playing already.
+        //If not, & we match with a defined object (e.g. Person), and
+        //the person has an action/talking list that is not empty, start action cutscene.
+        if (!this.isCutscenePlaying && match && match.talking.length){
+            this.startCutscene(match.talking[0].events);
+        }
+        // console.log({match});
+    }
+
+    checkForFootstepCutscene() {
+        const hero = this.gameObjects["hero"];
+        const match = this.cutsceneSpaces[`${hero.x},${hero.y}`];
+        //Check first if we don't have another cutscene playing already.
+        //If not, & we match with the grid square coordinate,
+        //start the footstep triggered cutscene.
+        if(!this.isCutscenePlaying && match) {
+            this.startCutscene(match[0].events);
+        }
+        // console.log({match});
+    }
+
     addWall(x, y) {
         this.walls[`${x},${y}`] = true;
     }
@@ -93,22 +122,37 @@ window.OverworldMaps = {
                 y: utils.withGrid(9),
                 src: "./images/characters/people/npc1.png",
                 behaviorLoop: [
-                    {type: "stand", direction: "left", time: 800},
-                    {type: "stand", direction: "up", time: 800},
-                    {type: "stand", direction: "right", time: 1200},
-                    {type: "stand", direction: "up", time: 300},
+                    {type: "stand", direction: "down", time: 800},
+                ],
+                talking: [
+                    {
+                        events: [
+                            {type: "textMessage", text: "Hi there, welcome to Misty Grove!", faceHero: "npcA"},
+                            {type: "textMessage", text: "My name is Greg and I'm the sheriff in these parts. You must be the new ranger in town..."},
+                            {type: "textMessage", text: "Misty Grove is special, we have a lot of magical critters that we are tasked to protect."},
+                            {type: "textMessage", text: "However, lately there has been a terrible incident..."},
+                            {type: "textMessage", text: "Maximus the Circus Master has captured all our Misty Critters!"},
+                            {type: "textMessage", text: "Recruit, I am tasking you to handle this situation and bring the critters home!"},  
+                        ]
+                    },
                 ]
             }),
             npcB: new Person({
-                x: utils.withGrid(3),
-                y: utils.withGrid(7),
+                x: utils.withGrid(8),
+                y: utils.withGrid(5),
                 src: "./images/characters/people/npc2.png",
                 behaviorLoop: [
-                    {type: "walk", direction: "left"},
-                    {type: "stand", direction: "up", time: 800},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "right"},
-                    {type: "walk", direction: "down"},
+                    {type: "stand", direction: "down"},
+                ],
+                talking: [
+                    {
+                        events: [
+                            {type: "textMessage", text: "Hello, I'm Rosa. I'm a ranger here in Misty Grove.", faceHero: "npcB"},
+                            {type: "textMessage", text: "Are you the new recruit? You should talk to Greg over there to get your task."},
+                            {who: "hero", type: "stand", direction: "down", time: 400},
+                            {type: "textMessage", text: "Yep! That's the guy down there!"},
+                        ]
+                    },
                 ]
             })
         },
@@ -157,6 +201,18 @@ window.OverworldMaps = {
             [utils.asGridCoord(8, 10)]: true,
             [utils.asGridCoord(9, 10)]: true,
             [utils.asGridCoord(10, 10)]: true,
+        },
+        cutsceneSpaces: {
+            [utils.asGridCoord(6,5)]: [
+                {
+                    events: [
+                        {who: "npcB", type: "stand", direction: "left"},
+                        {type: "textMessage", text: "Hey ranger! Meet Sheriff Greg down there!"},
+                        {who: "hero", type: "walk", direction: "left"},
+                        {who: "hero", type: "walk", direction: "down"},
+                    ]
+                }
+            ]
         }
     },
     MainStreet: {

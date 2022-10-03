@@ -46,10 +46,32 @@ class Overworld {
         step(); //step calling step again when a new frame starts.
     }
 
+    bindActionInput() {
+        new KeyPressListener("Enter", () => {
+            //Check if there is a person here to talk to (constant check, no need to unbind)
+            this.map.checkForActionCutscene();
+        })
+    }
+
+    bindHeroPositionCheck() {
+        document.addEventListener("PersonWalkingComplete", e => {
+            if(e.detail.whoId == "hero") {
+                //console.log("Hero has moved to a new position");
+
+                //Hero's position has changed, check overworld map to see if
+                //any footstep cutscene should trigger here.
+                this.map.checkForFootstepCutscene();
+            }
+        })
+    }
+
     init() {
         //Create new instance of overworld map, passing in the requested map.
         this.map = new OverworldMap(window.OverworldMaps.IntroRoom);
         this.map.mountObjects();
+
+        this.bindActionInput();
+        this.bindHeroPositionCheck();
 
         this.directionInput = new DirectionInput();
         this.directionInput.init();
@@ -59,19 +81,19 @@ class Overworld {
         this.directionInput.direction; 
 
         this.startGameLoop();
-        this.map.startCutscene([
-            {who: "npcB", type: "stand", direction: "right", time: 200},
-            {who: "hero", type: "walk", direction: "down"},
-            {who: "hero", type: "walk", direction: "down"},
-            {who: "npcA", type: "walk", direction: "up"},
-            {who: "npcA", type: "walk", direction: "left"},
-            {who: "hero", type: "stand", direction: "right", time: 200},
-            // {type: "textMessage", text: "Hi there, welcome to Misty Grove!"},
-            // {type: "textMessage", text: "I heard you are the new ranger in town... My name is Greg and I'm the sheriff in these parts."},
-            // {type: "textMessage", text: "Misty Grove is special, we have a lot of magical critters that we are tasked to protect."},
-            // {type: "textMessage", text: "However, lately there has been a terrible incident..."},
-            // {type: "textMessage", text: "Maximus the Circus Master has captured all our Misty Critters!"},
-            // {type: "textMessage", text: "Recruit, I am tasking you to handle this situation and bring the critters home!"},
-        ])
+        // this.map.startCutscene([
+        //     {who: "npcB", type: "stand", direction: "right", time: 200},
+        //     {who: "hero", type: "walk", direction: "down"},
+        //     {who: "hero", type: "walk", direction: "down"},
+        //     {who: "npcA", type: "walk", direction: "up"},
+        //     {who: "npcA", type: "walk", direction: "left"},
+        //     {who: "hero", type: "stand", direction: "right", time: 200},
+        //     // {type: "textMessage", text: "Hi there, welcome to Misty Grove!"},
+        //     // {type: "textMessage", text: "I heard you are the new ranger in town... My name is Greg and I'm the sheriff in these parts."},
+        //     // {type: "textMessage", text: "Misty Grove is special, we have a lot of magical critters that we are tasked to protect."},
+        //     // {type: "textMessage", text: "However, lately there has been a terrible incident..."},
+        //     // {type: "textMessage", text: "Maximus the Circus Master has captured all our Misty Critters!"},
+        //     // {type: "textMessage", text: "Recruit, I am tasking you to handle this situation and bring the critters home!"},
+        // ])
     }
 }
