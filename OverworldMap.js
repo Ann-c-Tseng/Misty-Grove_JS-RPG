@@ -232,23 +232,19 @@ window.OverworldMaps = {
                 isPlayerControlled: true
             }),
             npcA: new Person({
-                x: utils.withGrid(16), 
-                y: utils.withGrid(9),
-                src: "./images/characters/people/npc2.png",
-                behaviorLoop: [
-                    {type: "stand", direction: "right", time: 800},
-                    {type: "stand", direction: "down", time: 1200},
-                ]
-            }),
-            npcB: new Person({
-                x: utils.withGrid(17),
+                x: utils.withGrid(10),
                 y: utils.withGrid(10),
                 src: "./images/characters/people/npc3.png",
                 behaviorLoop: [
-                    {type: "walk", direction: "right"},
-                    {type: "walk", direction: "up"},
-                    {type: "walk", direction: "left"},
-                    {type: "walk", direction: "down"},
+                    {type: "stand", direction: "left", time: 500},
+                    {type: "stand", direction: "down", time: 1200},
+                    {type: "stand", direction: "right", time: 500},
+                ],
+                talking: [
+                    {
+                        events: [
+                        ]
+                    },
                 ]
             })
         },
