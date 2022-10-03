@@ -207,8 +207,7 @@ window.OverworldMaps = {
             [utils.asGridCoord(6,5)]: [
                 {
                     events: [
-                        {who: "npcB", type: "stand", direction: "left"},
-                        {type: "textMessage", text: "Hey ranger! Meet Sheriff Greg down there!"},
+                        {type: "textMessage", text: "Hey ranger! Meet Sheriff Greg down there!", faceHero: "npcB"},
                         {who: "hero", type: "walk", direction: "left"},
                         {who: "hero", type: "walk", direction: "down"},
                     ]
