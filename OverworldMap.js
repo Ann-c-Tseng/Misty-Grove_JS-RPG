@@ -1,5 +1,6 @@
 class OverworldMap {
     constructor(config) {
+        this.overworld = null;
         this.gameObjects = config.gameObjects;
         this.cutsceneSpaces = config.cutsceneSpaces || {};
 
@@ -212,6 +213,13 @@ window.OverworldMaps = {
                         {who: "hero", type: "walk", direction: "down"},
                     ]
                 }
+            ],
+            [utils.asGridCoord(5,10)]: [
+                {
+                    events: [
+                        {type: "changeMap", map: "MainStreet"}
+                    ]
+                }
             ]
         }
     },
@@ -220,7 +228,7 @@ window.OverworldMaps = {
         lowerSrc: "./images/maps/mainstreetLower.png",
         gameObjects: {
             hero: new Person({
-                x: utils.withGrid(15),
+                x: utils.withGrid(5),
                 y: utils.withGrid(10),
                 isPlayerControlled: true
             }),
@@ -244,6 +252,18 @@ window.OverworldMaps = {
                     {type: "walk", direction: "down"},
                 ]
             })
+        },
+        walls: {
+            //Todo: set up barriers for main street
+        },
+        cutsceneSpaces: {
+            [utils.asGridCoord(5,9)]: [
+                {
+                    events: [
+                        {type: "changeMap", map: "IntroRoom"},
+                    ]
+                }
+            ]
         }
     },
 }
