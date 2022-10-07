@@ -15,11 +15,18 @@
     font-size: 12px;
 }
 
+.TextMessage span {
+    opacity: 0;
+}
+
+.TextMessage span.revealed {
+    opacity: 1;
+}
+
 .TextMessage_button {
     margin: 0;
     font-size: 8px;
     padding: 0;
-    -webkit-appearance: none; /*prevent odd legacy ios formatting*/
     background: none;
     border: 0;
     font-family: inherit;

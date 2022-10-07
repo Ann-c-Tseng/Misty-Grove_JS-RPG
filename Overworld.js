@@ -73,7 +73,7 @@ class Overworld {
     }
 
     init() {
-        this.startMap(window.OverworldMaps.IntroRoom);
+        this.startMap(window.OverworldMaps.MainStreet);
 
         this.bindActionInput();
         this.bindHeroPositionCheck();
@@ -86,19 +86,9 @@ class Overworld {
         this.directionInput.direction; 
 
         this.startGameLoop();
-        // this.map.startCutscene([
-        //     {who: "npcB", type: "stand", direction: "right", time: 200},
-        //     {who: "hero", type: "walk", direction: "down"},
-        //     {who: "hero", type: "walk", direction: "down"},
-        //     {who: "npcA", type: "walk", direction: "up"},
-        //     {who: "npcA", type: "walk", direction: "left"},
-        //     {who: "hero", type: "stand", direction: "right", time: 200},
-        //     // {type: "textMessage", text: "Hi there, welcome to Misty Grove!"},
-        //     // {type: "textMessage", text: "I heard you are the new ranger in town... My name is Greg and I'm the sheriff in these parts."},
-        //     // {type: "textMessage", text: "Misty Grove is special, we have a lot of magical critters that we are tasked to protect."},
-        //     // {type: "textMessage", text: "However, lately there has been a terrible incident..."},
-        //     // {type: "textMessage", text: "Maximus the Circus Master has captured all our Misty Critters!"},
-        //     // {type: "textMessage", text: "Recruit, I am tasking you to handle this situation and bring the critters home!"},
-        // ])
+        this.map.startCutscene([
+            {type: "changeMap", map: "IntroRoom"},
+            // {type: "textMessage", text: "This is the very first message!"},
+        ])
     }
 }
