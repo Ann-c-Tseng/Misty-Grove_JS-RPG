@@ -73,7 +73,7 @@ class Overworld {
     }
 
     init() {
-        this.startMap(window.OverworldMaps.MainStreet);
+        this.startMap(window.OverworldMaps.IntroRoom);
 
         this.bindActionInput();
         this.bindHeroPositionCheck();
@@ -86,8 +86,10 @@ class Overworld {
         this.directionInput.direction; 
 
         this.startGameLoop();
+
         this.map.startCutscene([
-            {type: "changeMap", map: "IntroRoom"},
+            {type: "battle" },
+            // {type: "changeMap", map: "IntroRoom"},
             // {type: "textMessage", text: "This is the very first message!"},
         ])
     }
