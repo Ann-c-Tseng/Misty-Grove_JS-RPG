@@ -5,6 +5,7 @@
         <link href="./styles/global.css" rel="stylesheet">
         <link href="./styles/TextMessage.css" rel="stylesheet">
         <link href="./styles/SceneTransition.css" rel="stylesheet">
+        <link href="./styles/KeyboardMenu.css" rel="stylesheet">
         
         <!-- Battle CSS -->
         <link href="./styles/Battle.css" rel="stylesheet">
@@ -16,6 +17,15 @@
         <div class="game-container">
             <canvas class="game-canvas" width="352px" height="198px"></canvas>
         </div>
+
+        <!-- Content -->
+        <script src="./Content/mushrooms.js"></script>
+        <script src="./Content/actions.js"></script>
+        <script src="./Content/enemies.js"></script>
+
+        <!-- State -->
+        <script src="./State/PlayerState.js"></script>
+
 
         <!-- These are all loadblocking scripts, so we are not kicking the game off until init.js runs -->
         <script src="utils.js"></script>
@@ -30,12 +40,17 @@
         <script src="KeyPressListener.js"></script>
         <script src="RevealingText.js"></script>
         <script src="SceneTransition.js"></script>
+        <script src="KeyboardMenu.js"></script>
 
         <!-- Battle -->
         <script src="./Battle/Battle.js"></script>
         <script src="./Battle/Combatant.js"></script>
         <script src="./Battle/SubmissionMenu.js"></script>
+        <script src="./Battle/ReplacementMenu.js"></script>
         <script src="./Battle/Team.js"></script>
+        <script src="./Battle/BattleEvent.js"></script>
+        <script src="./Battle/TurnCycle.js"></script>
+        <script src="./Battle/BattleAnimations.js"></script>
 
         <script src="init.js"></script>
     </body>

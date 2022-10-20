@@ -87,10 +87,10 @@ class Overworld {
 
         this.startGameLoop();
 
-        this.map.startCutscene([
-            {type: "battle" },
-            // {type: "changeMap", map: "IntroRoom"},
-            // {type: "textMessage", text: "This is the very first message!"},
-        ])
+        // this.map.startCutscene([
+        //     {type: "battle", enemyId: "enemy2"},
+        //     // {type: "changeMap", map: "IntroRoom"},
+        //     // {type: "textMessage", text: "This is the very first message!"},
+        // ])
     }
 }

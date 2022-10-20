@@ -227,22 +227,34 @@ window.OverworldMaps = {
         lowerSrc: "./images/maps/mainstreetLower.png",
         gameObjects: {
             hero: new Person({
-                x: utils.withGrid(5),
+                x: utils.withGrid(19),
                 y: utils.withGrid(10),
                 isPlayerControlled: true
             }),
             npcA: new Person({
-                x: utils.withGrid(10),
-                y: utils.withGrid(10),
+                x: utils.withGrid(30),
+                y: utils.withGrid(11),
                 src: "./images/characters/people/npc3.png",
                 behaviorLoop: [
-                    {type: "stand", direction: "left", time: 500},
-                    {type: "stand", direction: "down", time: 1200},
-                    {type: "stand", direction: "right", time: 500},
+                    {type: "walk", direction: "left"},
+                    {type: "stand", direction: "down", time: 700},
+                    {type: "walk", direction: "right"},
+                    {type: "stand", direction: "down", time: 700},
+                    {type: "walk", direction: "up"},
+                    {type: "stand", direction: "up", time: 700},
+                    {type: "walk", direction: "left"},
+                    {type: "stand", direction: "left", time: 700},
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "down"},
                 ],
                 talking: [
                     {
                         events: [
+                            {type: "textMessage", text: "Hey there Ranger! I am Ranger Beth!", faceHero: "npcA"},
+                            {type: "textMessage", text: "I'm gonna throw you into a Mushroom battle for your training..."},
+                            {type: "textMessage", text: "Don't worry, I'll go easy on you!"},
+                            {type: "textMessage", text: "So let's see what you're made of!", faceHero: "npcA"},
+                            {type: "battle", enemyId: "enemy2"},
                         ]
                     },
                 ]
@@ -252,10 +264,17 @@ window.OverworldMaps = {
             //Todo: set up barriers for main street
         },
         cutsceneSpaces: {
-            [utils.asGridCoord(5,9)]: [
+            [utils.asGridCoord(19,9)]: [
                 {
                     events: [
                         {type: "changeMap", map: "IntroRoom"},
+                    ]
+                }
+            ],
+            [utils.asGridCoord(25,5)]: [
+                {
+                    events: [
+                        {type: "changeMap", map: "Circus"}
                     ]
                 }
             ]
