@@ -73,7 +73,7 @@ class Overworld {
     }
 
     init() {
-        this.startMap(window.OverworldMaps.IntroRoom);
+        this.startMap(window.OverworldMaps.MainStreet);
 
         this.bindActionInput();
         this.bindHeroPositionCheck();

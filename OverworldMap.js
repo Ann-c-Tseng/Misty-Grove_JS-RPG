@@ -261,7 +261,116 @@ window.OverworldMaps = {
             })
         },
         walls: {
-            //Todo: set up barriers for main street
+            //Cabin walls
+            [utils.asGridCoord(18, 9)]: true, //Left lower wall
+            [utils.asGridCoord(18, 8)]: true, //Left upper wall
+            [utils.asGridCoord(20, 9)]: true, //Left lower wall
+            [utils.asGridCoord(20, 8)]: true, //Left upper wall
+
+            //Forest trees
+            [utils.asGridCoord(4, 6)]: true,
+            [utils.asGridCoord(5, 6)]: true,
+            [utils.asGridCoord(6, 6)]: true,
+            [utils.asGridCoord(7, 6)]: true,
+            [utils.asGridCoord(8, 6)]: true,
+            [utils.asGridCoord(9, 6)]: true,
+            [utils.asGridCoord(10, 6)]: true,
+            [utils.asGridCoord(11, 6)]: true,
+            [utils.asGridCoord(12, 6)]: true,
+            [utils.asGridCoord(13, 6)]: true,
+            [utils.asGridCoord(14, 6)]: true,
+            [utils.asGridCoord(15, 6)]: true,
+            [utils.asGridCoord(16, 6)]: true,
+            [utils.asGridCoord(17, 6)]: true,
+            [utils.asGridCoord(18, 6)]: true,
+            [utils.asGridCoord(19, 6)]: true,
+            [utils.asGridCoord(20, 6)]: true,
+            [utils.asGridCoord(21, 6)]: true,
+            [utils.asGridCoord(22, 6)]: true,
+            [utils.asGridCoord(23, 6)]: true,
+            [utils.asGridCoord(24, 6)]: true,
+
+            [utils.asGridCoord(26, 6)]: true,
+            [utils.asGridCoord(27, 6)]: true,
+            [utils.asGridCoord(28, 6)]: true,
+            [utils.asGridCoord(29, 6)]: true,
+            [utils.asGridCoord(30, 6)]: true,
+            [utils.asGridCoord(31, 6)]: true,
+            [utils.asGridCoord(32, 6)]: true,
+            [utils.asGridCoord(33, 6)]: true,
+
+            //Cliff Walls
+            [utils.asGridCoord(4, 15)]: true,
+            [utils.asGridCoord(5, 15)]: true,
+            [utils.asGridCoord(6, 15)]: true,
+            [utils.asGridCoord(7, 15)]: true,
+            [utils.asGridCoord(8, 15)]: true,
+            [utils.asGridCoord(9, 15)]: true,
+            [utils.asGridCoord(10, 15)]: true,
+            [utils.asGridCoord(11, 15)]: true,
+            [utils.asGridCoord(12, 15)]: true,
+            [utils.asGridCoord(13, 15)]: true,
+            [utils.asGridCoord(14, 15)]: true,
+            [utils.asGridCoord(15, 15)]: true,
+            [utils.asGridCoord(16, 15)]: true,
+            [utils.asGridCoord(17, 15)]: true,
+            [utils.asGridCoord(18, 15)]: true,
+            [utils.asGridCoord(19, 15)]: true,
+            [utils.asGridCoord(20, 15)]: true,
+            [utils.asGridCoord(21, 15)]: true,
+            [utils.asGridCoord(22, 15)]: true,
+            [utils.asGridCoord(23, 15)]: true,
+            [utils.asGridCoord(24, 15)]: true,
+            [utils.asGridCoord(25, 15)]: true,
+            [utils.asGridCoord(26, 15)]: true,
+            [utils.asGridCoord(27, 15)]: true,
+            [utils.asGridCoord(28, 15)]: true,
+            [utils.asGridCoord(29, 15)]: true,
+            [utils.asGridCoord(30, 15)]: true,
+            [utils.asGridCoord(31, 15)]: true,
+            [utils.asGridCoord(32, 15)]: true,
+            [utils.asGridCoord(33, 15)]: true,
+
+            //Zone bounding walls
+            [utils.asGridCoord(4, 7)]: true,
+            [utils.asGridCoord(4, 8)]: true,
+            [utils.asGridCoord(4, 9)]: true,
+            [utils.asGridCoord(4, 10)]: true,
+            [utils.asGridCoord(4, 11)]: true,
+            [utils.asGridCoord(4, 12)]: true,
+            [utils.asGridCoord(4, 13)]: true,
+            [utils.asGridCoord(4, 14)]: true,
+            [utils.asGridCoord(33, 7)]: true,
+            [utils.asGridCoord(33, 8)]: true,
+            [utils.asGridCoord(33, 9)]: true,
+            [utils.asGridCoord(33, 10)]: true,
+            [utils.asGridCoord(33, 11)]: true,
+            [utils.asGridCoord(33, 12)]: true,
+            [utils.asGridCoord(33, 13)]: true,
+            [utils.asGridCoord(33, 14)]: true,
+
+            //Flower garden walls
+            [utils.asGridCoord(6, 10)]: true,
+            [utils.asGridCoord(6, 11)]: true,
+            [utils.asGridCoord(6, 12)]: true,
+            [utils.asGridCoord(7, 10)]: true,
+            [utils.asGridCoord(7, 11)]: true,
+            [utils.asGridCoord(7, 12)]: true,
+
+            [utils.asGridCoord(9, 10)]: true,
+            [utils.asGridCoord(9, 11)]: true,
+            [utils.asGridCoord(9, 12)]: true,
+            [utils.asGridCoord(10, 10)]: true,
+            [utils.asGridCoord(10, 11)]: true,
+            [utils.asGridCoord(10, 12)]: true,
+
+            [utils.asGridCoord(12, 10)]: true,
+            [utils.asGridCoord(12, 11)]: true,
+            [utils.asGridCoord(12, 12)]: true,
+            [utils.asGridCoord(13, 10)]: true,
+            [utils.asGridCoord(13, 11)]: true,
+            [utils.asGridCoord(13, 12)]: true,
+
         },
         cutsceneSpaces: {
             [utils.asGridCoord(19,9)]: [
