@@ -107,6 +107,9 @@ class Battle {
                     playerState.items = playerState.items.filter(item => {
                         return !this.usedInstanceIds[item.instanceId]
                     })
+
+                    //Send signal to update overworld HUD
+                    utils.emitEvent("PlayerStateUpdated");
                 }
 
                 this.element.remove(); //remove turn cycle and end battle!

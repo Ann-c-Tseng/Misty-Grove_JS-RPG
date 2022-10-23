@@ -389,4 +389,44 @@ window.OverworldMaps = {
             ]
         }
     },
+    Circus: {
+        upperSrc: "./images/maps/circusUpper.png",
+        lowerSrc: "./images/maps/circusLower.png",
+        gameObjects: {
+            hero: new Person({
+                x: utils.withGrid(19),
+                y: utils.withGrid(10),
+                isPlayerControlled: true
+            }),
+            npcA: new Person({
+                x: utils.withGrid(30),
+                y: utils.withGrid(11),
+                src: "./images/characters/people/enemyboss.png",
+                behaviorLoop: [
+                    {type: "walk", direction: "left"},
+                    {type: "stand", direction: "down", time: 700},
+                    {type: "walk", direction: "right"},
+                    {type: "stand", direction: "down", time: 700},
+                ],
+                talking: [
+                    {
+                        events: [
+                            {type: "textMessage", text: "...", faceHero: "npcA"},
+                        ]
+                    },
+                ]
+            })
+        },
+        walls: {
+        },
+        cutsceneSpaces: {
+            // [utils.asGridCoord(X,Y)]: [
+            //     {
+            //         events: [
+            //             {type: "changeMap", map: "MainStreet"},
+            //         ]
+            //     }
+            // ],
+        }
+    },
 }
