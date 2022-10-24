@@ -7,7 +7,7 @@ window.MushroomTypes = {
 window.Mushroom = {
     "g001": {
         name: "Gamba mushroom",
-        description: "a green mushroom",
+        description: "A green mushroom",
         type: MushroomTypes.green,
         src: "./images/characters/mushrooms/g001.png",
         icon: "./images/icons/greenicon.png",
