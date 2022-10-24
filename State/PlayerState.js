@@ -19,6 +19,15 @@ class PlayerState {
                 level: 1,
                 status: null,
             },
+            "m3": {
+                mushroomId: "r001",
+                hp: 50,
+                maxHp: 50,
+                xp: 75,
+                maxXp: 100,
+                level: 1,
+                status: null,
+            },
         }
         this.lineup = ["m1", "m2"];
         this.items = [
@@ -29,6 +38,18 @@ class PlayerState {
             {actionId: "item_removeStatus", instanceId: "item5"},
             {actionId: "item_removeStatus", instanceId: "item6"},
         ]
+    }
+
+    swapLineup(oldId, incomingId) {
+        const oldIndex = this.lineup.indexOf(oldId);
+        this.lineup[oldIndex] = incomingId;
+        utils.emitEvent("LineupChanged");
+    }
+
+    moveToFront(futureFrontId) {
+        this.lineup = this.lineup.filter(id => id !== futureFrontId);
+        this.lineup.unshift(futureFrontId); //unshift() adds to front of list
+        utils.emitEvent("LineupChanged");
     }
 }
 
