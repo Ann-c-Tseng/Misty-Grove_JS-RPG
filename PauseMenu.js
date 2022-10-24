@@ -29,7 +29,7 @@ class PauseMenu {
                 },
                 {
                     label: "Close",
-                    description: "Close the pause menu",
+                    description: "Close menu",
                     handler: () => {
                         this.close();
                     }
