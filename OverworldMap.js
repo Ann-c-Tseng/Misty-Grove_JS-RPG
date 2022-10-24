@@ -57,7 +57,10 @@ class OverworldMap {
                 event: events[i],
                 map: this,
             })
-            await eventHandler.init();
+            const result = await eventHandler.init();
+            if(result === "LOST_BATTLE") {
+                break;
+            }
         }
 
         this.isCutscenePlaying = false;
@@ -76,7 +79,13 @@ class OverworldMap {
         //If not, & we match with a defined object (e.g. Person), and
         //the person has an action/talking list that is not empty, start action cutscene.
         if (!this.isCutscenePlaying && match && match.talking.length){
-            this.startCutscene(match.talking[0].events);
+            const relevantScenario = match.talking.find(scenario => {
+                return (scenario.required || []).every(sf => {
+                    return playerState.storyFlags[sf]
+                })
+            })
+            
+            relevantScenario && this.startCutscene(relevantScenario.events);
         }
         // console.log({match});
     }
@@ -135,6 +144,7 @@ window.OverworldMaps = {
                             {type: "textMessage", text: "However, lately there has been a terrible incident..."},
                             {type: "textMessage", text: "Maximus the Circus Master has captured all our Misty Critters!"},
                             {type: "textMessage", text: "Recruit, I am tasking you to handle this situation and bring the critters home!"},  
+                            {type: "addStoryFlag", flag: "TALKED_TO_GREG"}
                         ]
                     },
                 ]
@@ -208,7 +218,7 @@ window.OverworldMaps = {
             [utils.asGridCoord(6,5)]: [
                 {
                     events: [
-                        {type: "textMessage", text: "Hey ranger! Meet Sheriff Greg down there!", faceHero: "npcB"},
+                        {type: "textMessage", text: "Hey ranger! Did you meet Sheriff Greg yet?", faceHero: "npcB"},
                         {who: "hero", type: "walk", direction: "left"},
                         {who: "hero", type: "walk", direction: "down"},
                     ]
@@ -237,27 +247,28 @@ window.OverworldMaps = {
                 y: utils.withGrid(11),
                 src: "./images/characters/people/npc3.png",
                 behaviorLoop: [
-                    {type: "walk", direction: "left"},
-                    {type: "stand", direction: "down", time: 700},
-                    {type: "walk", direction: "right"},
-                    {type: "stand", direction: "down", time: 700},
-                    {type: "walk", direction: "up"},
-                    {type: "stand", direction: "up", time: 700},
-                    {type: "walk", direction: "left"},
                     {type: "stand", direction: "left", time: 700},
-                    {type: "walk", direction: "right"},
-                    {type: "walk", direction: "down"},
                 ],
                 talking: [
                     {
+                        required: ["TALKED_TO_GREG"],
                         events: [
-                            {type: "textMessage", text: "Hey there Ranger! I am Ranger Beth!", faceHero: "npcA"},
-                            {type: "textMessage", text: "I'm gonna throw you into a Mushroom battle for your training..."},
+                            {type: "textMessage", text: "I'm Ranger Beth, and I'm here to train you before you head off!", faceHero: "npcA"},
+                            {type: "textMessage", text: "I'm gonna throw you into a Mushroom battle now..."},
                             {type: "textMessage", text: "Don't worry, I'll go easy on you!"},
-                            {type: "textMessage", text: "So let's see what you're made of!", faceHero: "npcA"},
-                            {type: "battle", enemyId: "enemy2"},
+                            {type: "textMessage", text: "So let's see what you're made of!"},
+                            {type: "battle", enemyId: "enemy2"},  
+                            {type: "addStoryFlag", flag: "DEFEATED_BETH"}, //IF player has won battle, then continue messages below
+                            {type: "textMessage", text: "You're no weakling, kid!"},
+                            {type: "textMessage", text: "I think you're ready to head off to the circus! Good luck!"},
                         ]
                     },
+                    {
+                        events: [
+                            {type: "textMessage", text: "You should talk to our sherrif, Greg!", faceHero: "npcA"},
+                            {type: "textMessage", text: "He's in the cabin over there..."},
+                        ]
+                    }
                 ]
             })
         },

@@ -38,6 +38,9 @@ class PlayerState {
             {actionId: "item_removeStatus", instanceId: "item5"},
             {actionId: "item_removeStatus", instanceId: "item6"},
         ]
+        this.storyFlags = {
+            // Configured in OverworldMaps.js => E.g. required: ["DEFEATED_BETH"],
+        };
     }
 
     swapLineup(oldId, incomingId) {

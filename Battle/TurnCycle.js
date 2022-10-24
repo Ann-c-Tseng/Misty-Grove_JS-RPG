@@ -78,15 +78,21 @@ class TurnCycle {
             }
         }
 
-        //Do we have a winning team?
+        //Do we have a winning team (player or enemy)? Null if not.
         const winner = this.getWinningTeam();
-        if(winner){
+        if(winner == "player"){
             await this.onNewEvent({
                 type: "textMessage",
-                text: "Winner!"
+                text: `You've won!`
             })
             this.onWinner(winner);
-            //END the battle -> todo
+            return;
+        } else if(winner == "enemy"){
+            await this.onNewEvent({
+                type: "textMessage",
+                text: `You've lost!`
+            })
+            this.onWinner(winner);
             return;
         }
 

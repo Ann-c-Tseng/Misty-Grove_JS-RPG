@@ -21,13 +21,13 @@ window.Enemies = {
         mushrooms: {
             "a": {
                 mushroomId: "g001",
-                hp: 20,
+                hp: 50,
                 maxHp: 50,
                 level: 1,
             },
             "b": {
                 mushroomId: "p001",
-                hp: 30,
+                hp: 50,
                 maxHp: 50,
                 level: 1,
             },

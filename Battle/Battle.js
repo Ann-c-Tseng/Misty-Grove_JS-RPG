@@ -113,7 +113,7 @@ class Battle {
                 }
 
                 this.element.remove(); //remove turn cycle and end battle!
-                this.onComplete();
+                this.onComplete(winner === "player");
             }
         })
         this.turnCycle.init();
