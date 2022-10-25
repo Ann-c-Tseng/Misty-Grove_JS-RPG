@@ -75,6 +75,7 @@ class PauseMenu {
     createElement() {
         this.element = document.createElement("div");
         this.element.classList.add("PauseMenu");
+        this.element.classList.add("overlayMenu");
         this.element.innerHTML = (`
             <h2>Mushroom Lineup - Pause Menu</h2>
         `)

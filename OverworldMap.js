@@ -251,6 +251,13 @@ window.OverworldMaps = {
                 ],
                 talking: [
                     {
+                        required: ["DEFEATED_BETH"],
+                        events: [
+                            {type: "textMessage", text: "You're no weakling, kid!"},
+                            {type: "textMessage", text: "Good luck at the Circus! It's up that path..."},
+                        ]
+                    },
+                    {
                         required: ["TALKED_TO_GREG"],
                         events: [
                             {type: "textMessage", text: "I'm Ranger Beth, and I'm here to train you before you head off!", faceHero: "npcA"},
@@ -259,7 +266,7 @@ window.OverworldMaps = {
                             {type: "textMessage", text: "So let's see what you're made of!"},
                             {type: "battle", enemyId: "enemy2"},  
                             {type: "addStoryFlag", flag: "DEFEATED_BETH"}, //IF player has won battle, then continue messages below
-                            {type: "textMessage", text: "You're no weakling, kid!"},
+                            {type: "textMessage", text: "Wow! Not Bad!"},
                             {type: "textMessage", text: "I think you're ready to head off to the circus! Good luck!"},
                         ]
                     },
@@ -270,6 +277,12 @@ window.OverworldMaps = {
                         ]
                     }
                 ]
+            }),
+            mushroomPot: new MushroomPot({
+                x: utils.withGrid(15),
+                y: utils.withGrid(12),
+                storyFlag: "USED_PLANT_POT",
+                mushrooms: ["g002", "r001"],
             })
         },
         walls: {

@@ -43,6 +43,24 @@ class PlayerState {
         };
     }
 
+    addMushroom(mushroomId) {
+        const newId = `p${Date.now()}` + Math.floor(Math.random() * 9999999);
+        this.mushrooms[newId] = {
+            mushroomId,
+            hp: 50,
+            maxHp: 50,
+            xp: 0,
+            maxXp: 100,
+            level: 1,
+            status: null,
+        }
+        if(this.lineup.length < 7) { //7 as the MAX mushroom lineup number for now
+            this.lineup.push(newId)
+        }
+        utils.emitEvent("LineupChanged");
+        console.log(this)
+    }
+
     swapLineup(oldId, incomingId) {
         const oldIndex = this.lineup.indexOf(oldId);
         this.lineup[oldIndex] = incomingId;
