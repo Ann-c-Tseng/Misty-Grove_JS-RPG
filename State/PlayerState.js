@@ -33,8 +33,6 @@ class PlayerState {
         this.items = [
             {actionId: "item_recoverHp", instanceId: "item1"},
             {actionId: "item_recoverHp", instanceId: "item2"},
-            {actionId: "item_recoverHp", instanceId: "item3"},
-            {actionId: "item_recoverHp", instanceId: "item4"},
             {actionId: "item_removeStatus", instanceId: "item5"},
             {actionId: "item_removeStatus", instanceId: "item6"},
         ]

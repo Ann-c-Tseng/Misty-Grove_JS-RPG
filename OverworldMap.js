@@ -120,6 +120,7 @@ class OverworldMap {
 //Object of all of the maps in our game.
 window.OverworldMaps = {
     IntroRoom: {
+        id: "IntroRoom",
         upperSrc: "./images/maps/introroomUpper.png",
         lowerSrc: "./images/maps/introroomLower.png",
         gameObjects: {
@@ -234,6 +235,7 @@ window.OverworldMaps = {
         }
     },
     MainStreet: {
+        id: "MainStreet",
         upperSrc: "./images/maps/mainstreetUpper.png",
         lowerSrc: "./images/maps/mainstreetLower.png",
         gameObjects: {
@@ -415,21 +417,25 @@ window.OverworldMaps = {
         }
     },
     Circus: {
+        id: "Circus",
         upperSrc: "./images/maps/circusUpper.png",
         lowerSrc: "./images/maps/circusLower.png",
         gameObjects: {
             hero: new Person({
-                x: utils.withGrid(19),
-                y: utils.withGrid(10),
+                x: utils.withGrid(25),
+                y: utils.withGrid(17),
                 isPlayerControlled: true
             }),
             npcA: new Person({
-                x: utils.withGrid(30),
+                x: utils.withGrid(18),
                 y: utils.withGrid(11),
                 src: "./images/characters/people/enemyboss.png",
                 behaviorLoop: [
                     {type: "walk", direction: "left"},
-                    {type: "stand", direction: "down", time: 700},
+                    {type: "walk", direction: "left"},
+                    {type: "walk", direction: "left"},
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "right"},
                     {type: "walk", direction: "right"},
                     {type: "stand", direction: "down", time: 700},
                 ],
