@@ -397,7 +397,6 @@ window.OverworldMaps = {
             [utils.asGridCoord(13, 10)]: true,
             [utils.asGridCoord(13, 11)]: true,
             [utils.asGridCoord(13, 12)]: true,
-
         },
         cutsceneSpaces: {
             [utils.asGridCoord(19,9)]: [
@@ -427,37 +426,141 @@ window.OverworldMaps = {
                 isPlayerControlled: true
             }),
             npcA: new Person({
-                x: utils.withGrid(18),
+                x: utils.withGrid(20),
                 y: utils.withGrid(11),
                 src: "./images/characters/people/enemyboss.png",
                 behaviorLoop: [
-                    {type: "walk", direction: "left"},
-                    {type: "walk", direction: "left"},
-                    {type: "walk", direction: "left"},
-                    {type: "walk", direction: "right"},
-                    {type: "walk", direction: "right"},
-                    {type: "walk", direction: "right"},
-                    {type: "stand", direction: "down", time: 700},
+                    {type: "stand", direction: "down"},
                 ],
                 talking: [
                     {
                         events: [
-                            {type: "textMessage", text: "...", faceHero: "npcA"},
+                            {type: "textMessage", text: "Go away I'm busy...", faceHero: "npcA"},
                         ]
                     },
                 ]
             })
         },
         walls: {
+            //Circus walls
+            [utils.asGridCoord(17, 10)]: true, 
+            [utils.asGridCoord(17, 9)]: true, 
+            [utils.asGridCoord(17, 8)]: true, 
+            [utils.asGridCoord(18, 10)]: true, 
+            [utils.asGridCoord(18, 9)]: true, 
+            [utils.asGridCoord(18, 8)]: true, 
+            [utils.asGridCoord(19, 10)]: true, 
+            [utils.asGridCoord(19, 9)]: true, 
+            [utils.asGridCoord(19, 8)]: true, 
+            [utils.asGridCoord(20, 10)]: true, 
+            [utils.asGridCoord(20, 9)]: true,
+            [utils.asGridCoord(20, 8)]: true, 
+            [utils.asGridCoord(21, 10)]: true, 
+            [utils.asGridCoord(21, 9)]: true,
+            [utils.asGridCoord(21, 8)]: true, 
+
+            //Forest trees
+            [utils.asGridCoord(4, 6)]: true,
+            [utils.asGridCoord(5, 6)]: true,
+            [utils.asGridCoord(6, 6)]: true,
+            [utils.asGridCoord(7, 6)]: true,
+            [utils.asGridCoord(8, 6)]: true,
+            [utils.asGridCoord(9, 6)]: true,
+            [utils.asGridCoord(10, 6)]: true,
+            [utils.asGridCoord(11, 6)]: true,
+            [utils.asGridCoord(12, 6)]: true,
+            [utils.asGridCoord(13, 6)]: true,
+            [utils.asGridCoord(14, 6)]: true,
+            [utils.asGridCoord(15, 6)]: true,
+            [utils.asGridCoord(16, 6)]: true,
+            [utils.asGridCoord(17, 6)]: true,
+            [utils.asGridCoord(18, 6)]: true,
+            [utils.asGridCoord(19, 6)]: true,
+            [utils.asGridCoord(20, 6)]: true,
+            [utils.asGridCoord(21, 6)]: true,
+            [utils.asGridCoord(22, 6)]: true,
+            [utils.asGridCoord(23, 6)]: true,
+            [utils.asGridCoord(24, 6)]: true,
+
+            [utils.asGridCoord(26, 6)]: true,
+            [utils.asGridCoord(27, 6)]: true,
+            [utils.asGridCoord(28, 6)]: true,
+            [utils.asGridCoord(29, 6)]: true,
+            [utils.asGridCoord(30, 6)]: true,
+            [utils.asGridCoord(31, 6)]: true,
+            [utils.asGridCoord(32, 6)]: true,
+            [utils.asGridCoord(33, 6)]: true,
+
+            //Lower Forest Walls
+            [utils.asGridCoord(4, 18)]: true,
+            [utils.asGridCoord(5, 18)]: true,
+            [utils.asGridCoord(6, 18)]: true,
+            [utils.asGridCoord(7, 18)]: true,
+            [utils.asGridCoord(8, 18)]: true,
+            [utils.asGridCoord(9, 18)]: true,
+            [utils.asGridCoord(10, 18)]: true,
+            [utils.asGridCoord(11, 18)]: true,
+            [utils.asGridCoord(12, 18)]: true,
+            [utils.asGridCoord(13, 18)]: true,
+            [utils.asGridCoord(14, 18)]: true,
+            [utils.asGridCoord(15, 18)]: true,
+            [utils.asGridCoord(16, 18)]: true,
+            [utils.asGridCoord(17, 18)]: true,
+            [utils.asGridCoord(18, 18)]: true,
+            [utils.asGridCoord(19, 18)]: true,
+            [utils.asGridCoord(20, 18)]: true,
+            [utils.asGridCoord(21, 18)]: true,
+            [utils.asGridCoord(22, 18)]: true,
+            [utils.asGridCoord(23, 18)]: true,
+            [utils.asGridCoord(24, 18)]: true,
+
+            [utils.asGridCoord(26, 18)]: true,
+            [utils.asGridCoord(27, 18)]: true,
+            [utils.asGridCoord(28, 18)]: true,
+            [utils.asGridCoord(29, 18)]: true,
+            [utils.asGridCoord(30, 18)]: true,
+            [utils.asGridCoord(31, 18)]: true,
+            [utils.asGridCoord(32, 18)]: true,
+            [utils.asGridCoord(33, 18)]: true,
+
+            //Zone bounding walls
+            [utils.asGridCoord(4, 7)]: true,
+            [utils.asGridCoord(4, 8)]: true,
+            [utils.asGridCoord(4, 9)]: true,
+            [utils.asGridCoord(4, 10)]: true,
+            [utils.asGridCoord(4, 11)]: true,
+            [utils.asGridCoord(4, 12)]: true,
+            [utils.asGridCoord(4, 13)]: true,
+            [utils.asGridCoord(4, 14)]: true,
+            [utils.asGridCoord(33, 7)]: true,
+            [utils.asGridCoord(33, 8)]: true,
+            [utils.asGridCoord(33, 9)]: true,
+            [utils.asGridCoord(33, 10)]: true,
+            [utils.asGridCoord(33, 11)]: true,
+            [utils.asGridCoord(33, 12)]: true,
+            [utils.asGridCoord(33, 13)]: true,
+            [utils.asGridCoord(33, 14)]: true,
+
+            //Animal space walls
+            [utils.asGridCoord(10, 11)]: true,
+            [utils.asGridCoord(10, 12)]: true,
+            [utils.asGridCoord(10, 13)]: true,
+            [utils.asGridCoord(11, 10)]: true,
+            [utils.asGridCoord(11, 11)]: true,
+            [utils.asGridCoord(11, 12)]: true,
+            [utils.asGridCoord(11, 13)]: true,
+            [utils.asGridCoord(12, 10)]: true,
+            [utils.asGridCoord(12, 11)]: true,
+            [utils.asGridCoord(12, 13)]: true,
         },
         cutsceneSpaces: {
-            // [utils.asGridCoord(X,Y)]: [
-            //     {
-            //         events: [
-            //             {type: "changeMap", map: "MainStreet"},
-            //         ]
-            //     }
-            // ],
+            [utils.asGridCoord(25,18)]: [
+                {
+                    events: [
+                        {type: "changeMap", map: "MainStreet"},
+                    ]
+                }
+            ],
         }
     },
 }
