@@ -532,6 +532,10 @@ window.OverworldMaps = {
             [utils.asGridCoord(4, 12)]: true,
             [utils.asGridCoord(4, 13)]: true,
             [utils.asGridCoord(4, 14)]: true,
+            [utils.asGridCoord(4, 15)]: true,
+            [utils.asGridCoord(4, 16)]: true,
+            [utils.asGridCoord(4, 17)]: true,
+            [utils.asGridCoord(4, 18)]: true,
             [utils.asGridCoord(33, 7)]: true,
             [utils.asGridCoord(33, 8)]: true,
             [utils.asGridCoord(33, 9)]: true,
@@ -540,6 +544,10 @@ window.OverworldMaps = {
             [utils.asGridCoord(33, 12)]: true,
             [utils.asGridCoord(33, 13)]: true,
             [utils.asGridCoord(33, 14)]: true,
+            [utils.asGridCoord(33, 15)]: true,
+            [utils.asGridCoord(33, 16)]: true,
+            [utils.asGridCoord(33, 17)]: true,
+            [utils.asGridCoord(33, 18)]: true,
 
             //Animal space walls
             [utils.asGridCoord(10, 11)]: true,
