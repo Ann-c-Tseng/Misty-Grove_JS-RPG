@@ -146,7 +146,7 @@ window.OverworldMaps = {
                     {
                         events: [
                             {type: "textMessage", text: "Hi there, welcome to Misty Grove!", faceHero: "npcA"},
-                            {type: "textMessage", text: "My name is Greg and I'm the sheriff in these parts. You must be the new ranger in town..."},
+                            {type: "textMessage", text: "My name is Greg and I'm the Sheriff in these parts. You must be the new ranger in town..."},
                             {type: "textMessage", text: "Misty Grove is special, we have a lot of magical critters that we are tasked to protect."},
                             {type: "textMessage", text: "However, lately there has been a terrible incident..."},
                             {type: "textMessage", text: "Maximus the Circus Master has captured all our Misty Critters!"},
@@ -262,7 +262,7 @@ window.OverworldMaps = {
                     },
                     {
                         events: [
-                            {type: "textMessage", text: "You should talk to our sherrif, Greg!", faceHero: "npcA"},
+                            {type: "textMessage", text: "You should talk to our Sheriff, Greg!", faceHero: "npcA"},
                             {type: "textMessage", text: "He's in the cabin over there..."},
                         ]
                     }
