@@ -8,6 +8,7 @@ class Person extends GameObject {
 
         //standing progress
         this.isStanding = false;
+        this.intentPosition = null; //or [x,y]
 
         //Distinguish if a person is the user's character or just an NPC
         this.isPlayerControlled = config.isPlayerControlled || false;
@@ -40,6 +41,10 @@ class Person extends GameObject {
     }
 
     startBehavior(state, behavior) {
+        if(!this.isMounted) {
+            return;
+        }
+
         //Set character direction to whatever behavior specified.
         this.direction = behavior.direction;
         if(behavior.type === "walk") {
@@ -52,8 +57,13 @@ class Person extends GameObject {
                 return;
             }
             //Otherwise ready to walk
-            state.map.moveWall(this.x, this.y, this.direction); //set a wall for the future position we will move to
             this.movingProgressRemaining = 16;
+            //Add next position intent
+            const intentPosition = utils.nextPosition(this.x, this.y, this.direction)
+            this.intentPosition = [
+                intentPosition.x,
+                intentPosition.y,
+            ]
             this.updateSprite(state);
         }
 
@@ -76,6 +86,7 @@ class Person extends GameObject {
 
         if(this.movingProgressRemaining === 0) {
             //We finished the walk!
+            this.intentPosition = null;
             utils.emitEvent("PersonWalkingComplete", {
                 whoId: this.id
             })

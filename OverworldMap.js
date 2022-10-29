@@ -1,7 +1,9 @@
 class OverworldMap {
     constructor(config) {
         this.overworld = null;
-        this.gameObjects = config.gameObjects;
+        this.gameObjects = {}; //Live objects here
+        this.configObjects = config.configObjects; //Configuration content
+
         this.cutsceneSpaces = config.cutsceneSpaces || {};
 
         this.walls = config.walls || {};
@@ -32,18 +34,37 @@ class OverworldMap {
 
     isSpaceTaken(currentX, currentY, direction) {
         const {x, y} = utils.nextPosition(currentX, currentY, direction);
-        return this.walls[`${x},${y}`] || false;
+        if (this.walls[`${x},${y}`]) {
+            return true;
+        }
+
+        //Check for game objects at this position
+        return Object.values(this.gameObjects).find(obj => {
+            if(obj.x === x && obj.y === y) { return true; }
+            if(obj.intentPosition && obj.intentPosition[0] === x && obj.intentPosition[1] === y) {
+                return true;
+            }
+            return false;
+        })
     }
 
     mountObjects() {
-        Object.keys(this.gameObjects).forEach(key => {
-            let object = this.gameObjects[key];
+        Object.keys(this.configObjects).forEach(key => {
+            let object = this.configObjects[key];
             object.id = key;
-            //TODO: determine if this object should actually 
-            //mount (e.g. if player pick up a key, next time 
-            //when map is rendered the key should not be mounted 
-            //anymore)
-            object.mount(this);            
+
+            let instance;
+            if(object.type === "Person") {
+                instance = new Person(object);
+            }
+
+            if(object.type === "MushroomPot") {
+                instance = new MushroomPot(object);
+            }
+
+            this.gameObjects[key] = instance;
+            this.gameObjects[key].id = key;
+            instance.mount(this);
         })
     }
 
@@ -101,20 +122,6 @@ class OverworldMap {
         }
         // console.log({match});
     }
-
-    addWall(x, y) {
-        this.walls[`${x},${y}`] = true;
-    }
-
-    removeWall(x, y) {
-        delete this.walls[`${x},${y}`];
-    }
-
-    moveWall(wasX, wasY, direction) {
-        this.removeWall(wasX, wasY); //remove the wall
-        const {x,y} = utils.nextPosition(wasX, wasY, direction); //get the enw position's coordinates
-        this.addWall(x,y); //add the new wall
-    }
 }
 
 //Object of all of the maps in our game.
@@ -123,18 +130,25 @@ window.OverworldMaps = {
         id: "IntroRoom",
         upperSrc: "./images/maps/introroomUpper.png",
         lowerSrc: "./images/maps/introroomLower.png",
-        gameObjects: {
-            hero: new Person({
-                x: utils.withGrid(5),
-                y: utils.withGrid(10),
+        configObjects: {
+            hero: {
+                type: "Person",
+                x: utils.withGrid(3),
+                y: utils.withGrid(6),
                 isPlayerControlled: true
-            }),
-            npcA: new Person({
+            },
+            npcA: {
+                type: "Person",
                 x: utils.withGrid(5), 
                 y: utils.withGrid(7),
                 src: "./images/characters/people/npc1.png",
                 behaviorLoop: [
-                    {type: "stand", direction: "down", time: 800},
+                    {type: "walk", direction: "left"},
+                    {type: "walk", direction: "left"},
+                    {type: "stand", direction: "down", time:500},
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "right"},
+                    {type: "stand", direction: "down", time:500},
                 ],
                 talking: [
                     {
@@ -155,7 +169,7 @@ window.OverworldMaps = {
                         ]
                     },
                 ]
-            }),
+            },
         },
         walls: {
             //Grid number within room that has a wall. I.e. (col, row)
@@ -226,13 +240,15 @@ window.OverworldMaps = {
         id: "MainStreet",
         upperSrc: "./images/maps/mainstreetUpper.png",
         lowerSrc: "./images/maps/mainstreetLower.png",
-        gameObjects: {
-            hero: new Person({
+        configObjects: {
+            hero: {
+                type: "Person",
                 x: utils.withGrid(19),
                 y: utils.withGrid(10),
                 isPlayerControlled: true
-            }),
-            npcA: new Person({
+            },
+            npcA: {
+                type: "Person",
                 x: utils.withGrid(30),
                 y: utils.withGrid(11),
                 src: "./images/characters/people/npc3.png",
@@ -267,13 +283,14 @@ window.OverworldMaps = {
                         ]
                     }
                 ]
-            }),
-            mushroomPot: new MushroomPot({
+            },
+            mushroomPot: {
+                type: "MushroomPot",
                 x: utils.withGrid(15),
                 y: utils.withGrid(12),
                 storyFlag: "USED_PLANT_POT",
                 mushrooms: ["g002", "r001"],
-            })
+            }
         },
         walls: {
             //Cabin walls
@@ -407,13 +424,16 @@ window.OverworldMaps = {
         id: "Circus",
         upperSrc: "./images/maps/circusUpper.png",
         lowerSrc: "./images/maps/circusLower.png",
-        gameObjects: {
-            hero: new Person({
+
+        configObjects: {
+            hero: {
+                type: "Person",
                 x: utils.withGrid(25),
                 y: utils.withGrid(18),
                 isPlayerControlled: true
-            }),
-            npcA: new Person({
+            },
+            npcA: {
+                type: "Person",
                 x: utils.withGrid(20),
                 y: utils.withGrid(11),
                 src: "./images/characters/people/enemyboss.png",
@@ -427,7 +447,7 @@ window.OverworldMaps = {
                         ]
                     },
                 ]
-            })
+            }
         },
         walls: {
             //Circus walls
