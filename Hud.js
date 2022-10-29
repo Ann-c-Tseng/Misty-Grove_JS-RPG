@@ -28,7 +28,7 @@ class Hud {
                 ...mushroom,
             }, null)
             scoreboard.createElement();
-            console.log(scoreboard);
+            // console.log(scoreboard);
             this.scoreboards.push(scoreboard);
             this.element.appendChild(scoreboard.hudElement);
         })

@@ -28,7 +28,7 @@ window.BattleAnimations = {
 
         //Remove glob orb when animation is done
         div.addEventListener("animationend", () => {
-            console.log("glob removed");
+            // console.log("glob removed");
         });
 
         document.querySelector(".Battle").appendChild(div);

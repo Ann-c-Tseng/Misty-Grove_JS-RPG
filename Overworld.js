@@ -103,18 +103,18 @@ class Overworld {
         this.titleScreen = new TitleScreen({
             progress: this.progress
         })
-        // const useSaveFile = await this.titleScreen.init(container);
+        const useSaveFile = await this.titleScreen.init(container);
 
         //Potentially load saved data
         let initialHeroState = null;
-        // if(useSaveFile) {
-        //     this.progress.load();
-        //     initialHeroState = {
-        //         x: this.progress.startingHeroX,
-        //         y: this.progress.startingHeroY,
-        //         direction: this.progress.startingHeroDirection,
-        //     }
-        // }
+        if(useSaveFile) {
+            this.progress.load();
+            initialHeroState = {
+                x: this.progress.startingHeroX,
+                y: this.progress.startingHeroY,
+                direction: this.progress.startingHeroDirection,
+            }
+        }
 
         //Load the HUD
         this.hud = new Hud();

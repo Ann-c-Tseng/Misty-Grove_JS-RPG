@@ -22,8 +22,8 @@ class PauseMenu {
             return [
                 ...lineupMushrooms,
                 {
-                    label: "Save",
-                    description: "Save your progress",
+                    label: "Save Your Game",
+                    description: "Save your game progress for later",
                     handler: () => {
                         this.progress.save();
                         this.close();
@@ -95,7 +95,7 @@ class PauseMenu {
         this.keyboardMenu = new KeyboardMenu({
             discriptionContainer: container
         })
-        console.log(this.keyboardMenu);
+        // console.log(this.keyboardMenu);
         this.keyboardMenu.init(this.element);
         this.keyboardMenu.setOptions(this.getOptions("root"));
 
