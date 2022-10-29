@@ -85,15 +85,38 @@ class Overworld {
             this.map.gameObjects.hero.y = heroInitialState.y;
             this.map.gameObjects.hero.direction = heroInitialState.direction;
         }
+
+        this.progress.mapId = mapConfig.id;
+        this.progress.startingHeroX = this.map.gameObjects.hero.x;
+        this.progress.startingHeroY = this.map.gameObjects.hero.y;
+        this.progress.startingHeroDirection = this.map.gameObjects.hero.direction;
     }
 
     init() {
 
+        //Create a new progres tracker
+        this.progress = new Progress();
+
+        //Potentially load saved data
+        let initialHeroState = null;
+        const saveFile = this.progress.getSaveFile();
+        if(saveFile) {
+            // this.progress.load();
+            // initialHeroState = {
+            //     x: this.progress.startingHeroX,
+            //     y: this.progress.startingHeroY,
+            //     direction: this.progress.startingHeroDirection,
+            // }
+        }
+
+        //Load the HUD
         this.hud = new Hud();
         this.hud.init(document.querySelector(".game-container"));
 
-        this.startMap(window.OverworldMaps.MainStreet);
+        //Starting first game map
+        this.startMap(window.OverworldMaps[this.progress.mapId], initialHeroState);
 
+        //Create controls
         this.bindActionInput();
         this.bindHeroPositionCheck();
 
@@ -104,6 +127,7 @@ class Overworld {
         //Otherwise return undefined if no key is held right now.
         this.directionInput.direction; 
 
+        //Game starts now...
         this.startGameLoop();
 
         // this.map.startCutscene([

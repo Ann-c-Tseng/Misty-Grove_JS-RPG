@@ -1,5 +1,6 @@
 class PauseMenu {
-    constructor({onComplete}) {
+    constructor({progress, onComplete}) {
+        this.progress = progress;
         this.onComplete = onComplete;
     }
 
@@ -20,13 +21,14 @@ class PauseMenu {
             })
             return [
                 ...lineupMushrooms,
-                {
-                    label: "Save",
-                    description: "Save your progress",
-                    handler: () => {
-                        //We'll come back to this...
-                    }
-                },
+                // {
+                //     label: "Save",
+                //     description: "Save your progress",
+                //     handler: () => {
+                //         this.progress.save();
+                //         this.close();
+                //     }
+                // },
                 {
                     label: "Close",
                     description: "Close menu",
