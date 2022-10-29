@@ -29,7 +29,7 @@ class PlayerState {
                 status: null,
             },
         }
-        this.lineup = ["m1"];
+        this.lineup = ["m1", "m2", "m3"];
         this.items = [
             {actionId: "item_recoverHp", instanceId: "item1"},
             {actionId: "item_recoverHp", instanceId: "item2"},

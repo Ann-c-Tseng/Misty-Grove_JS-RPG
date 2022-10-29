@@ -1,6 +1,6 @@
 window.Enemies = {
     "enemyboss": {
-        name: "Circus Master John",
+        name: "Circus Master Maximus",
         src: "./images/characters/people/enemyboss.png",
         mushrooms: {
             "a": {
@@ -11,6 +11,11 @@ window.Enemies = {
             "b": {
                 mushroomId: "r001",
                 maxHp: 50,
+                level: 1,
+            },
+            "c": {
+                mushroomId: "g002",
+                maxHp: 100,
                 level: 1,
             },
         }

@@ -143,29 +143,28 @@ window.OverworldMaps = {
                 y: utils.withGrid(7),
                 src: "./images/characters/people/npc1.png",
                 behaviorLoop: [
+                    {type: "stand", direction: "down", time:3000},
                     {type: "walk", direction: "left"},
-                    {type: "walk", direction: "left"},
-                    {type: "stand", direction: "down", time:500},
+                    {type: "stand", direction: "down", time:3000},
                     {type: "walk", direction: "right"},
-                    {type: "walk", direction: "right"},
-                    {type: "stand", direction: "down", time:500},
+                    {type: "stand", direction: "down", time:3000},
                 ],
                 talking: [
                     {
                         required: ["TALKED_TO_GREG"],
                         events: [
-                            {type: "textMessage", text: "Good luck kid! We're counting on you..."},
+                            {type: "textMessage", text: "Hey kid, we're counting on you..."},
                         ]
                     },
                     {
                         events: [
                             {type: "textMessage", text: "Hi there, welcome to Misty Grove!", faceHero: "npcA"},
-                            {type: "textMessage", text: "My name is Greg and I'm the Sheriff in these parts. You must be the new ranger in town..."},
+                            {type: "textMessage", text: "My name is Greg and I'm the Sheriff in these parts. You must be the new ranger..."},
                             {type: "textMessage", text: "Misty Grove is special, we have a lot of magical critters that we are tasked to protect."},
                             {type: "textMessage", text: "However, lately there has been a terrible incident..."},
                             {type: "textMessage", text: "Maximus the Circus Master has captured all our Misty Critters!"},
                             {type: "textMessage", text: "Recruit, I am tasking you to handle this situation and bring the critters home!"},  
-                            {type: "addStoryFlag", flag: "TALKED_TO_GREG"}
+                            {type: "addStoryFlag", flag: "TALKED_TO_GREG"},
                         ]
                     },
                 ]
@@ -253,7 +252,15 @@ window.OverworldMaps = {
                 y: utils.withGrid(11),
                 src: "./images/characters/people/npc3.png",
                 behaviorLoop: [
-                    {type: "stand", direction: "left", time: 700},
+                    {type: "stand", direction: "left", time: 2000},
+                    {type: "walk", direction: "up"},
+                    {type: "stand", direction: "up", time: 2000},
+                    {type: "walk", direction: "left"},
+                    {type: "stand", direction: "left", time: 2000},
+                    {type: "walk", direction: "right"},
+                    {type: "stand", direction: "up", time: 2000},
+                    {type: "walk", direction: "down"},
+                    {type: "stand", direction: "left", time: 2000},
                 ],
                 talking: [
                     {
@@ -284,13 +291,13 @@ window.OverworldMaps = {
                     }
                 ]
             },
-            mushroomPot: {
-                type: "MushroomPot",
-                x: utils.withGrid(15),
-                y: utils.withGrid(12),
-                storyFlag: "USED_PLANT_POT",
-                mushrooms: ["g002", "r001"],
-            }
+            // mushroomPot: {
+            //     type: "MushroomPot",
+            //     x: utils.withGrid(15),
+            //     y: utils.withGrid(12),
+            //     storyFlag: "USED_PLANT_POT",
+            //     mushrooms: ["g002", "r001"],
+            // }
         },
         walls: {
             //Cabin walls
@@ -438,12 +445,41 @@ window.OverworldMaps = {
                 y: utils.withGrid(11),
                 src: "./images/characters/people/enemyboss.png",
                 behaviorLoop: [
-                    {type: "stand", direction: "down"},
+                    {type: "stand", direction: "down", time:8000},
+                    {type: "walk", direction: "down"},
+                    {type: "walk", direction: "left"},
+                    {type: "walk", direction: "left"},
+                    {type: "walk", direction: "left"},
+                    {type: "walk", direction: "left"},
+                    {type: "walk", direction: "left"},
+                    {type: "walk", direction: "left"},
+                    {type: "walk", direction: "left"},
+                    {type: "stand", direction: "left", time:1000},
+                    {type: "stand", direction: "up", time:1000},
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "right"},
+                    {type: "walk", direction: "up"},
+                    {type: "stand", direction: "down", time:8000},
+                    
                 ],
                 talking: [
                     {
+                        required: ["TALKED_TO_GREG", "DEFEATED_BETH"],
                         events: [
-                            {type: "textMessage", text: "Go away I'm busy...", faceHero: "npcA"},
+                            {type: "textMessage", text: "Oh ho ho... I heard you are the shiny new recruit?"},
+                            {type: "textMessage", text: "They decided to send a new ranger thinking you can take down me?"},
+                            {type: "textMessage", text: "I will crush you! My Circus will prevail! The animals are mine!"},
+                            {type: "battle", enemyId: "enemyboss"}
+                        ]
+                    },
+                    {
+                        events: [
+                            {type: "textMessage", text: "Go away, I'm busy...", faceHero: "npcA"},
                         ]
                     },
                 ]
