@@ -4,17 +4,26 @@ class TitleScreen{
     }
 
     getOptions(resolve) {
+        const safeFile = this.progress.getSaveFile();
         return [
             {
-                label: "New Game",
-                description: "Start a new adventure!",
+                label: "Begin",
+                description: "Misty Grove: Start an adventure!",
                 handler: () => {
                     this.close();
                     resolve();
                 }
             },
-            //Maybe continue option here...
-        ]
+            //Continue option here...
+            safeFile ? {
+                label: "Continue Game",
+                description: "Resume the adventure",
+                handler: () => {
+                    this.close();
+                    resolve(safeFile);
+                } 
+            } : null
+        ].filter(v => v);
     }
 
     createElement() {

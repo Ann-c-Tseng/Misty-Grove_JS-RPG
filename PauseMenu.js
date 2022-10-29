@@ -21,14 +21,14 @@ class PauseMenu {
             })
             return [
                 ...lineupMushrooms,
-                // {
-                //     label: "Save",
-                //     description: "Save your progress",
-                //     handler: () => {
-                //         this.progress.save();
-                //         this.close();
-                //     }
-                // },
+                {
+                    label: "Save",
+                    description: "Save your progress",
+                    handler: () => {
+                        this.progress.save();
+                        this.close();
+                    }
+                },
                 {
                     label: "Close",
                     description: "Close menu",
