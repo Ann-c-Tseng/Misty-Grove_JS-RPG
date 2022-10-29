@@ -74,11 +74,17 @@ class Overworld {
         })
     }
 
-    startMap(mapConfig) {
+    startMap(mapConfig, heroInitialState=null) {
         //Create new instance of overworld map, passing in the requested map.
         this.map = new OverworldMap(mapConfig);
         this.map.overworld = this;
         this.map.mountObjects();
+
+        if(heroInitialState) {
+            this.map.gameObjects.hero.x = heroInitialState.x;
+            this.map.gameObjects.hero.y = heroInitialState.y;
+            this.map.gameObjects.hero.direction = heroInitialState.direction;
+        }
     }
 
     init() {

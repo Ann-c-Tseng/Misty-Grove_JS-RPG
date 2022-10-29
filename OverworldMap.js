@@ -126,17 +126,23 @@ window.OverworldMaps = {
         gameObjects: {
             hero: new Person({
                 x: utils.withGrid(5),
-                y: utils.withGrid(6),
+                y: utils.withGrid(10),
                 isPlayerControlled: true
             }),
             npcA: new Person({
-                x: utils.withGrid(7), 
-                y: utils.withGrid(9),
+                x: utils.withGrid(5), 
+                y: utils.withGrid(7),
                 src: "./images/characters/people/npc1.png",
                 behaviorLoop: [
                     {type: "stand", direction: "down", time: 800},
                 ],
                 talking: [
+                    {
+                        required: ["TALKED_TO_GREG"],
+                        events: [
+                            {type: "textMessage", text: "Good luck kid! We're counting on you..."},
+                        ]
+                    },
                     {
                         events: [
                             {type: "textMessage", text: "Hi there, welcome to Misty Grove!", faceHero: "npcA"},
@@ -150,24 +156,6 @@ window.OverworldMaps = {
                     },
                 ]
             }),
-            npcB: new Person({
-                x: utils.withGrid(8),
-                y: utils.withGrid(5),
-                src: "./images/characters/people/npc2.png",
-                behaviorLoop: [
-                    {type: "stand", direction: "down"},
-                ],
-                talking: [
-                    {
-                        events: [
-                            {type: "textMessage", text: "Hello, I'm Rosa. I'm a ranger here in Misty Grove.", faceHero: "npcB"},
-                            {type: "textMessage", text: "Are you the new recruit? You should talk to Greg over there to get your task."},
-                            {who: "hero", type: "stand", direction: "down", time: 400},
-                            {type: "textMessage", text: "Yep! That's the guy down there!"},
-                        ]
-                    },
-                ]
-            })
         },
         walls: {
             //Grid number within room that has a wall. I.e. (col, row)
@@ -216,19 +204,19 @@ window.OverworldMaps = {
             [utils.asGridCoord(10, 10)]: true,
         },
         cutsceneSpaces: {
-            [utils.asGridCoord(6,5)]: [
-                {
-                    events: [
-                        {type: "textMessage", text: "Hey ranger! Did you meet Sheriff Greg yet?", faceHero: "npcB"},
-                        {who: "hero", type: "walk", direction: "left"},
-                        {who: "hero", type: "walk", direction: "down"},
-                    ]
-                }
-            ],
+            // [utils.asGridCoord(6,5)]: [
+            //     {
+                    // events: [ //Testing tile textmessage...
+                    //     {type: "textMessage", text: "Hey ranger! Did you meet Sheriff Greg yet?"},
+                    //     {who: "hero", type: "walk", direction: "left"},
+                    //     {who: "hero", type: "walk", direction: "down"},
+                    // ]
+            //     }
+            // ],
             [utils.asGridCoord(5,10)]: [
                 {
                     events: [
-                        {type: "changeMap", map: "MainStreet"}
+                        {type: "changeMap", map: "MainStreet", x: utils.withGrid(19), y: utils.withGrid(9), direction: "down"}
                     ]
                 }
             ]
@@ -402,14 +390,14 @@ window.OverworldMaps = {
             [utils.asGridCoord(19,9)]: [
                 {
                     events: [
-                        {type: "changeMap", map: "IntroRoom"},
+                        {type: "changeMap", map: "IntroRoom", x: utils.withGrid(5), y: utils.withGrid(10), direction: "up"},
                     ]
                 }
             ],
             [utils.asGridCoord(25,5)]: [
                 {
                     events: [
-                        {type: "changeMap", map: "Circus"}
+                        {type: "changeMap", map: "Circus", x: utils.withGrid(25), y: utils.withGrid(18), direction: "up"}
                     ]
                 }
             ]
@@ -422,7 +410,7 @@ window.OverworldMaps = {
         gameObjects: {
             hero: new Person({
                 x: utils.withGrid(25),
-                y: utils.withGrid(17),
+                y: utils.withGrid(18),
                 isPlayerControlled: true
             }),
             npcA: new Person({
@@ -565,7 +553,7 @@ window.OverworldMaps = {
             [utils.asGridCoord(25,18)]: [
                 {
                     events: [
-                        {type: "changeMap", map: "MainStreet"},
+                        {type: "changeMap", map: "MainStreet", x: utils.withGrid(25), y: utils.withGrid(5), direction: "down"},
                     ]
                 }
             ],
