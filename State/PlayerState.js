@@ -3,7 +3,7 @@ class PlayerState {
         this.mushrooms = {
             "m1": {
                 mushroomId: "g001",
-                hp: 10,
+                hp: 50,
                 maxHp: 50,
                 xp: 0,
                 maxXp: 100,
@@ -12,7 +12,7 @@ class PlayerState {
             },
             "m2": {
                 mushroomId: "p001",
-                hp: 20,
+                hp: 50,
                 maxHp: 50,
                 xp: 0,
                 maxXp: 100,
@@ -21,7 +21,7 @@ class PlayerState {
             },
             "m3": {
                 mushroomId: "r001",
-                hp: 35,
+                hp: 50,
                 maxHp: 50,
                 xp: 0,
                 maxXp: 100,
