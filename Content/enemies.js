@@ -15,7 +15,7 @@ window.Enemies = {
             },
             "c": {
                 mushroomId: "g002",
-                maxHp: 100,
+                maxHp: 90,
                 level: 1,
             },
         }
