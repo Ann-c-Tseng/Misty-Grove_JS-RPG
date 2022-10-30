@@ -638,11 +638,18 @@ window.OverworldMaps = {
                 ],
                 talking: [
                     {
+                        required: ["TALKED_TO_GREG", "DEFEATED_BETH", "TALKED_TO_LICON_ALREADY"],
+                        events: [
+                            {type: "textMessage", text: "Hello again... access the blue pot over there to care for your mushrooms..."},
+                        ]
+                    }, 
+                    {
                         required: ["TALKED_TO_GREG", "DEFEATED_BETH"],
                         events: [
                             {type: "textMessage", text: "Hello..."},
                             {type: "textMessage", text: "My name is Licon, and I'm Misty Grove's secret shop keeper."},
                             {type: "textMessage", text: "Access the blue pot over there to care for your mushrooms..."},
+                            {type: "addStoryFlag", flag: "TALKED_TO_LICON_ALREADY"}
                         ]
                     }, 
                     {
