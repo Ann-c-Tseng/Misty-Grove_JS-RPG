@@ -120,8 +120,12 @@ class SubmissionMenu {
     }
 
     decide() {
-        //TODO: enemies should randomly decide what to do...
-        this.menuSubmit(Actions[this.caster.actions[0]]);
+        //Enemies should randomly decide what to do...
+        const maxNumExclusive = this.caster.actions.length;
+        let rand = Math.random() * maxNumExclusive;
+        rand = Math.floor(rand);
+
+        this.menuSubmit(Actions[this.caster.actions[rand]]);
     }
 
     showMenu(container) {
