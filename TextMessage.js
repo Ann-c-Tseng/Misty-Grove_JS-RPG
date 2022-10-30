@@ -26,7 +26,6 @@ class TextMessage {
         this.done();
       });
 
-      console.log("hello from text message!!");
       this.actionListener = new KeyPressListener("Enter", () => {
         // console.log("Enter key pressed!");
 
