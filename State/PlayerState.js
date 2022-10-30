@@ -3,7 +3,7 @@ class PlayerState {
         this.mushrooms = {
             "m1": {
                 mushroomId: "g001",
-                hp: 50,
+                hp: 10,
                 maxHp: 50,
                 xp: 0,
                 maxXp: 100,
@@ -12,7 +12,7 @@ class PlayerState {
             },
             "m2": {
                 mushroomId: "p001",
-                hp: 50,
+                hp: 20,
                 maxHp: 50,
                 xp: 0,
                 maxXp: 100,
@@ -21,7 +21,7 @@ class PlayerState {
             },
             "m3": {
                 mushroomId: "r001",
-                hp: 50,
+                hp: 35,
                 maxHp: 50,
                 xp: 0,
                 maxXp: 100,
@@ -42,19 +42,14 @@ class PlayerState {
     }
 
     healMushroom(mushroomId) {
-        const newId = `p${Date.now()}` + Math.floor(Math.random() * 9999999);
-        this.mushrooms[newId] = {
-            mushroomId,
-            hp: 50,
-            maxHp: 50,
-            xp: 0,
-            maxXp: 100,
-            level: 1,
-            status: null,
+        console.log("---HEAL MUSHROOM...---");
+        const mushroomObj = this.mushrooms[mushroomId];
+        if(mushroomObj.hp < mushroomObj.maxHp) {
+            mushroomObj.hp = mushroomObj.maxHp;
         }
-        utils.emitEvent("LineupChanged");
-        console.log("HEAL MUSHROOM...");
+        console.log("--- Healed ---");
         console.log(this);
+        utils.emitEvent("PlayerStateUpdated");
     }
 
     swapLineup(oldId, incomingId) {
