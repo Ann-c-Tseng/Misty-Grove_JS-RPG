@@ -144,10 +144,8 @@ window.OverworldMaps = {
                 src: "./images/characters/people/npc1.png",
                 behaviorLoop: [
                     {type: "stand", direction: "down", time:3000},
-                    {type: "walk", direction: "left"},
-                    {type: "stand", direction: "down", time:3000},
-                    {type: "walk", direction: "right"},
-                    {type: "stand", direction: "down", time:3000},
+                    {type: "stand", direction: "left", time:1000},
+                    {type: "stand", direction: "right", time:1000},
                 ],
                 talking: [
                     {
@@ -275,7 +273,6 @@ window.OverworldMaps = {
                         events: [
                             {type: "textMessage", text: "I'm Ranger Beth, and I'm here to train you before you head off!", faceHero: "npcA"},
                             {type: "textMessage", text: "I'm gonna throw you into a Mushroom battle now..."},
-                            {type: "textMessage", text: "Don't worry, I'll go easy on you!"},
                             {type: "textMessage", text: "So let's see what you're made of!"},
                             {type: "battle", enemyId: "enemy2"},  
                             {type: "addStoryFlag", flag: "DEFEATED_BETH"}, //IF player has won battle, then continue messages below
@@ -291,13 +288,6 @@ window.OverworldMaps = {
                     }
                 ]
             },
-            // mushroomPot: {
-            //     type: "MushroomPot",
-            //     x: utils.withGrid(15),
-            //     y: utils.withGrid(12),
-            //     storyFlag: "USED_PLANT_POT",
-            //     mushrooms: ["g002", "r001"],
-            // }
         },
         walls: {
             //Cabin walls
@@ -471,10 +461,14 @@ window.OverworldMaps = {
                     {
                         required: ["TALKED_TO_GREG", "DEFEATED_BETH"],
                         events: [
-                            {type: "textMessage", text: "Oh ho ho... I heard you are the shiny new recruit?"},
-                            {type: "textMessage", text: "They decided to send a new ranger thinking you can take down me?"},
-                            {type: "textMessage", text: "I will crush you! My Circus will prevail! The animals are mine!"},
-                            {type: "battle", enemyId: "enemyboss"}
+                            {type: "textMessage", text: "... You are the shiny new recruit?"},
+                            {type: "textMessage", text: "They decided to send a new ranger thinking you can take me down?"},
+                            {type: "textMessage", text: "I will crush you! Those critters are mine!"},
+                            {type: "textMessage", text: "Lets see how you fair against me!"},
+                            {type: "battle", enemyId: "enemyboss"},
+                            {type: "addStoryFlag", flag: "DEFEATED_MAXIMUS"}, //IF player has won battle, then continue messages below
+                            {type: "textMessage", text: "W-what? I can't believe you defeated me..."},
+                            {type: "textMessage", text: "F-fine, take your critters! You rangers meddling in other people's business... I'm leaving!"},
                         ]
                     },
                     {
@@ -610,6 +604,124 @@ window.OverworldMaps = {
                 {
                     events: [
                         {type: "changeMap", map: "MainStreet", x: utils.withGrid(25), y: utils.withGrid(5), direction: "down"},
+                    ]
+                }
+            ],
+            [utils.asGridCoord(27,13)]: [
+                {
+                    events: [
+                        {type: "changeMap", map: "UndergroundShop", x: utils.withGrid(6), y: utils.withGrid(1), direction: "down"},
+                    ]
+                }
+            ],
+        }
+    },
+    UndergroundShop: {
+        id: "UndergroundShop",
+        upperSrc: "./images/maps/undergroundShopUpper.png",
+        lowerSrc: "./images/maps/undergroundShopLower.png",
+
+        configObjects: {
+            hero: {
+                type: "Person",
+                x: utils.withGrid(6),
+                y: utils.withGrid(1),
+                isPlayerControlled: true
+            },
+            npcA: {
+                type: "Person",
+                x: utils.withGrid(2),
+                y: utils.withGrid(4),
+                src: "./images/characters/people/seller.png",
+                behaviorLoop: [
+                    {type: "stand", direction: "right", time:9999},
+                ],
+                talking: [
+                    {
+                        required: ["TALKED_TO_GREG", "DEFEATED_BETH"],
+                        events: [
+                            {type: "textMessage", text: "Hello..."},
+                            {type: "textMessage", text: "My name is Licon, and I'm Misty Grove's secret shop keeper."},
+                            {type: "textMessage", text: "Access the blue pot over there to care for your mushrooms..."},
+                        ]
+                    }, 
+                    {
+                        events: [
+                            {type: "textMessage", text: "You are not allowed to be here... leave now.", faceHero: "npcA"},
+                        ]
+                    },
+                ]
+            },
+            mushroomPot: {
+                type: "MushroomPot",
+                x: utils.withGrid(5),
+                y: utils.withGrid(6),
+                storyFlag: "USED_PLANT_POT",
+                playerState: this.playerState,
+            }
+        },
+        walls: {
+            [utils.asGridCoord(1, 1)]: true, 
+            [utils.asGridCoord(2, 1)]: true,
+            [utils.asGridCoord(3, 1)]: true,
+            [utils.asGridCoord(4, 1)]: true,
+            [utils.asGridCoord(5, 1)]: true,
+            [utils.asGridCoord(6, 0)]: true,
+            [utils.asGridCoord(7, 1)]: true,
+            [utils.asGridCoord(8, 1)]: true,
+            [utils.asGridCoord(9, 1)]: true,
+            [utils.asGridCoord(10, 1)]: true,
+
+            [utils.asGridCoord(11, 1)]: true,
+            [utils.asGridCoord(11, 2)]: true,
+            [utils.asGridCoord(11, 3)]: true,
+            [utils.asGridCoord(11, 4)]: true,
+            [utils.asGridCoord(11, 5)]: true,
+            [utils.asGridCoord(11, 6)]: true,
+            [utils.asGridCoord(11, 7)]: true,
+
+            [utils.asGridCoord(1, 8)]: true, 
+            [utils.asGridCoord(2, 8)]: true,
+            [utils.asGridCoord(3, 8)]: true,
+            [utils.asGridCoord(4, 8)]: true,
+            [utils.asGridCoord(5, 8)]: true,
+            [utils.asGridCoord(6, 8)]: true,
+            [utils.asGridCoord(7, 8)]: true,
+            [utils.asGridCoord(8, 8)]: true,
+            [utils.asGridCoord(9, 8)]: true,
+            [utils.asGridCoord(10, 8)]: true,
+
+            [utils.asGridCoord(0, 1)]: true,
+            [utils.asGridCoord(0, 2)]: true,
+            [utils.asGridCoord(0, 3)]: true,
+            [utils.asGridCoord(0, 4)]: true,
+            [utils.asGridCoord(0, 5)]: true,
+            [utils.asGridCoord(0, 6)]: true,
+            [utils.asGridCoord(0, 7)]: true,
+
+            //Boxes + Potions
+            [utils.asGridCoord(9, 2)]: true,
+            [utils.asGridCoord(10, 2)]: true,
+
+            [utils.asGridCoord(1, 7)]: true,
+            [utils.asGridCoord(2, 7)]: true,
+
+            [utils.asGridCoord(1, 4)]: true,
+
+            //Table and Storage
+            [utils.asGridCoord(3, 4)]: true,
+            [utils.asGridCoord(3, 5)]: true,
+
+            [utils.asGridCoord(7, 4)]: true,
+            [utils.asGridCoord(7, 5)]: true,
+            [utils.asGridCoord(8, 4)]: true,
+            [utils.asGridCoord(8, 5)]: true,
+        },
+        cutsceneSpaces: {
+            [utils.asGridCoord(6,1)]: [
+                {
+                    events: [
+                        {type: "changeMap", map: "Circus", x: utils.withGrid(27), y: utils.withGrid(12), direction: "down"}, 
                     ]
                 }
             ],

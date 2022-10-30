@@ -11,7 +11,8 @@ class MushroomPot extends GameObject {
             currentAnimation: "used-down"
         });
         this.storyFlag = config.storyFlag;
-        this.mushrooms = config.mushrooms;
+        this.pState = config.playerState;
+        // console.log(this.pState);
 
         this.talking = [
             // { //Uncomment if we want pot to be 1-time use only.
@@ -22,8 +23,8 @@ class MushroomPot extends GameObject {
             // },
             {
                 events: [
-                    {type: "textMessage", text: "Approaching the Plant Pot! Lets get some mushrooms..."},
-                    {type: "craftingMenu", mushrooms: this.mushrooms},
+                    {type: "textMessage", text: "Lets heal some mushrooms..."},
+                    {type: "craftingMenu", playerState: this.pState},
                     {type: "addStoryFlag", flag: this.storyFlag},
                 ]
             }

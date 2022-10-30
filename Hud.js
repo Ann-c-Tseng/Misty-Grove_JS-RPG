@@ -45,6 +45,7 @@ class Hud {
 
         document.addEventListener("LineupChanged", () => {
             this.createElement();
+            console.log("IN HUD, LineupChanged");
             container.appendChild(this.element);
         })
     }

@@ -114,7 +114,7 @@ class OverworldEvent {
 
     craftingMenu(resolve) {
         const menu = new CraftingMenu({
-            mushrooms: this.event.mushrooms,
+            playerState: this.event.playerState,
             onComplete: () => {
                 resolve();
             }

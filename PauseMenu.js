@@ -5,7 +5,7 @@ class PauseMenu {
     }
 
     getOptions(pageKey) {
-        //Base case: Show the first [age of options
+        //Base case: Show the first page of options
         if(pageKey === "root"){
             /*All mushrooms for us*/
             const lineupMushrooms = playerState.lineup.map(id => {

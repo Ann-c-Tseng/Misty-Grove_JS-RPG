@@ -1,17 +1,24 @@
 class CraftingMenu {
-    constructor({ mushrooms, onComplete }) {
-        this.mushrooms = mushrooms;
+    constructor({ playerState, onComplete }) {
+        this.playerState = playerState;
         this.onComplete = onComplete;
     }
 
     getOptions() {
-        return this.mushrooms.map(id => {
-            const base = Mushroom[id];
+        const lineup = this.playerState.lineup;
+        const mushroomObjs = this.playerState.mushrooms;
+
+        return lineup.map(id => {
+            const mId = mushroomObjs[id].mushroomId;
+            const mObj = Mushroom[mId];
+            // console.log(mObj);
+
             return {
-                label: base.name,
-                description: base.description,
+                label: mObj.name,
+                description: "Heal " + mObj.name,
                 handler: () => {
-                    playerState.addMushroom(id);
+                    console.log(id);
+                    playerState.healMushroom(id);
                     this.close();
                 }
             }
@@ -22,8 +29,9 @@ class CraftingMenu {
         this.element = document.createElement("div");
         this.element.classList.add("CraftingMenu");
         this.element.classList.add("overlayMenu");
+        this.element.classList.add("DescriptionBox");
         this.element.innerHTML = (`
-            <h2>Gain a Mushroom</h2>
+            <h2>Heal Your Mushrooms</h2>
         `)
     }
 

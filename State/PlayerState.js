@@ -38,10 +38,10 @@ class PlayerState {
         ]
         this.storyFlags = {
             // Configured in OverworldMaps.js => E.g. required: ["DEFEATED_BETH"],
-        };
+        }; 
     }
 
-    addMushroom(mushroomId) {
+    healMushroom(mushroomId) {
         const newId = `p${Date.now()}` + Math.floor(Math.random() * 9999999);
         this.mushrooms[newId] = {
             mushroomId,
@@ -52,23 +52,25 @@ class PlayerState {
             level: 1,
             status: null,
         }
-        if(this.lineup.length < 7) { //7 as the MAX mushroom lineup number for now
-            this.lineup.push(newId)
-        }
         utils.emitEvent("LineupChanged");
-        // console.log(this);
+        console.log("HEAL MUSHROOM...");
+        console.log(this);
     }
 
     swapLineup(oldId, incomingId) {
         const oldIndex = this.lineup.indexOf(oldId);
         this.lineup[oldIndex] = incomingId;
         utils.emitEvent("LineupChanged");
+        console.log("SWAP LINEUP...");
+        console.log(this);
     }
 
     moveToFront(futureFrontId) {
         this.lineup = this.lineup.filter(id => id !== futureFrontId);
         this.lineup.unshift(futureFrontId); //unshift() adds to front of list
         utils.emitEvent("LineupChanged");
+        console.log("MOVE TO FRONT...");
+        console.log(this);
     }
 }
 
