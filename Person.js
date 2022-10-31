@@ -20,15 +20,13 @@ class Person extends GameObject {
             "left": ["x", -1],
             "right": ["x", 1],
         }
+        this.standBehaviorTimeout;
     }
 
     update(state) {
         if(this.movingProgressRemaining > 0){
             this.updatePosition();
         } else {
-            //More cases for starting to walk will come here
-            
-
             //Case: We can walk if no cutscene is currently happening, we're keyboard ready, and have an arrow pressed
             if(!state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow){
                 this.startBehavior(state,  {
@@ -69,7 +67,12 @@ class Person extends GameObject {
 
         if(behavior.type === "stand") {
             this.isStanding = true;
-            setTimeout(() => {
+
+            if(this.standBehaviorTimeout){
+                clearTimeout(this.standBehaviorTimeout);
+                console.log("CLEAR TIMEOUT for STAND");
+            }
+            this.standBehaviorTimeout = setTimeout(() => {
                 utils.emitEvent("PersonStandComplete", {
                     whoId: this.id
                 })

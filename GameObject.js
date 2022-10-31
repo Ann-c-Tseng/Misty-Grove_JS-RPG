@@ -40,12 +40,14 @@ class GameObject {
         if(map.isCutscenePlaying) {
             // console.log("Print out map for game object after cutscene: ");
             // console.log(map);
+            console.log("will retry", this.id);
+            console.log(this.behaviorLoop);
             if(this.retryTimeout) {
                 clearTimeout(this.retryTimeout);
             }
             this.retryTimeout = setTimeout(() => {
                 this.doBehaviorEvent(map);
-            }, 1000)
+            }, 2000)
             return;
         }
 
@@ -66,5 +68,6 @@ class GameObject {
 
         //Do behavior again
         this.doBehaviorEvent(map);
+        console.log("DOING BEHAVIOR AGAIN");
     }
 }

@@ -85,9 +85,6 @@ class OverworldMap {
         }
 
         this.isCutscenePlaying = false;
-
-        //Reset NPCs to do their idle behavior after cutscene is finished!
-        Object.values(this.gameObjects).forEach(object => object.doBehaviorEvent(this));
     }
 
     checkForActionCutscene() {
@@ -435,7 +432,7 @@ window.OverworldMaps = {
                 y: utils.withGrid(11),
                 src: "./images/characters/people/enemyboss.png",
                 behaviorLoop: [
-                    {type: "stand", direction: "down", time:8000},
+                    {type: "stand", direction: "down", time:3000},
                     {type: "walk", direction: "down"},
                     {type: "walk", direction: "left"},
                     {type: "walk", direction: "left"},
@@ -444,8 +441,7 @@ window.OverworldMaps = {
                     {type: "walk", direction: "left"},
                     {type: "walk", direction: "left"},
                     {type: "walk", direction: "left"},
-                    {type: "stand", direction: "left", time:1000},
-                    {type: "stand", direction: "up", time:1000},
+                    {type: "stand", direction: "left", time:2000},
                     {type: "walk", direction: "right"},
                     {type: "walk", direction: "right"},
                     {type: "walk", direction: "right"},
@@ -454,7 +450,6 @@ window.OverworldMaps = {
                     {type: "walk", direction: "right"},
                     {type: "walk", direction: "right"},
                     {type: "walk", direction: "up"},
-                    {type: "stand", direction: "down", time:8000},
                     
                 ],
                 talking: [
