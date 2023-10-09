@@ -3,7 +3,7 @@
 ## Project Summary:
 This is an RPG game I created coding along to Drew Conley's Pizza Legends JavaScript Development coding series to challenge myself in game development using traditional front-end tech stack. Here is the link to Drew's YouTube channel: https://www.youtube.com/@DrewConley
 
-This project's game story is not yet finished, but functionalities such as the following are all implemented:
+This project's functionalities include:
 * character movement controlled by WASD or Arrowkeys
 * NPC movement and text speech
 * Cutscenes and map transitions
